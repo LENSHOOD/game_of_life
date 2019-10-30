@@ -47,4 +47,32 @@ public class BlockMapTest {
         expectedException.expect(BlockMapException.class);
         BlockMap.init(1001, blockHelper);
     }
+    
+    @Test
+    public void should_sum_0_when_all_dead() {
+        BlockMap blockMap = BlockMap.init(5, new BlockHelper() {
+            @Override
+            public Map<Block.Point, Block> generateBlocks(int size) {
+                return generateAllDead(size);
+            }
+        });
+
+        assertEquals(0, blockMap.gatherNeighbors(3, 3));
+    }
+
+    @Test
+    public void should_sum_2_when_2_alive() {
+        BlockMap blockMap = BlockMap.init(5, new BlockHelper() {
+            @Override
+            public Map<Block.Point, Block> generateBlocks(int size) {
+                Map<Block.Point, Block> blocks = generateAllDead(size);
+                blocks.get(new Block.Point(3, 2)).setAlive(true);
+                blocks.get(new Block.Point(4, 4)).setAlive(true);
+                return blocks;
+            }
+        });
+
+        assertEquals(2, blockMap.gatherNeighbors(3, 3));
+    }
+
 }

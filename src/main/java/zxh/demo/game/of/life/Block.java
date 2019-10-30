@@ -9,6 +9,18 @@ import java.util.Objects;
 */
 public class Block {
 
+    public void trySurvive(int neighborSum) {
+        if (isAlive()) {
+            if (neighborSum < 2 || neighborSum > 3) {
+                setAlive(false);
+            }
+        } else {
+            if (neighborSum == 3) {
+                setAlive(true);
+            }
+        }
+    }
+
     public static class Point {
         private int x, y;
 

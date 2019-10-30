@@ -35,4 +35,22 @@ public class BlockMap {
     public int size() {
         return blocks.size();
     }
+
+    public int gatherNeighbors(int x, int y) {
+        int sum = 0;
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                Block.Point currentPoint = new Block.Point(x + i, y + j);
+                if (!blocks.containsKey(currentPoint)) {
+                    continue;
+                }
+
+                if (blocks.get(currentPoint).isAlive()) {
+                    sum += 1;
+                }
+            }
+        }
+
+        return sum;
+    }
 }
