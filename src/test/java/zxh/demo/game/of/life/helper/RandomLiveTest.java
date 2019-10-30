@@ -1,7 +1,7 @@
 package zxh.demo.game.of.life.helper;
 
 import org.junit.Test;
-import zxh.demo.game.of.life.Block;
+import zxh.demo.game.of.life.block.Block;
 
 import java.util.Map;
 

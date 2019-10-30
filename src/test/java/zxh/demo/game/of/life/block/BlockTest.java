@@ -1,6 +1,7 @@
-package zxh.demo.game.of.life;
+package zxh.demo.game.of.life.block;
 
 import org.junit.Test;
+import zxh.demo.game.of.life.block.Block;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

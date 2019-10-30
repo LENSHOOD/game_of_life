@@ -1,5 +1,6 @@
-package zxh.demo.game.of.life;
+package zxh.demo.game.of.life.block;
 
+import zxh.demo.game.of.life.exception.BlockMapException;
 import zxh.demo.game.of.life.helper.BlockHelper;
 
 import java.util.Map;
@@ -52,5 +53,22 @@ public class BlockMap {
         }
 
         return sum;
+    }
+
+    public void nextRound() {
+        blocks.forEach((point, block) -> block.trySurvive(gatherNeighbors(point.getX(), point.getY())));
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        int n = (int) Math.sqrt(size());
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                result.append(blocks.get(new Block.Point(i, j))).append(" ");
+            }
+            result.append("\n");
+        }
+        return result.toString();
     }
 }

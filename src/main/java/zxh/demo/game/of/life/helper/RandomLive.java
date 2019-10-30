@@ -1,6 +1,6 @@
 package zxh.demo.game.of.life.helper;
 
-import zxh.demo.game.of.life.Block;
+import zxh.demo.game.of.life.block.Block;
 
 import java.util.*;
 
@@ -22,7 +22,7 @@ public class RandomLive implements BlockHelper {
 
     private Map<Block.Point, Block> getRandomAliveBlocks(int size) {
         Map<Block.Point, Block> randomAliveMap = new HashMap<>();
-        int randomCount = random.nextInt(size * 2);
+        int randomCount = random.nextInt(size * size / 3);
         for (int i = 0; i < randomCount; i++) {
             Block block = new Block(
                     random.nextInt(size - 1),

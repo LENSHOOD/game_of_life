@@ -1,6 +1,6 @@
 package zxh.demo.game.of.life.helper;
 
-import zxh.demo.game.of.life.Block;
+import zxh.demo.game.of.life.block.Block;
 
 import java.util.HashMap;
 import java.util.Map;

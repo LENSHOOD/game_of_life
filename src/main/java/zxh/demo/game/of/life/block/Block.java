@@ -1,4 +1,4 @@
-package zxh.demo.game.of.life;
+package zxh.demo.game.of.life.block;
 
 import java.util.Objects;
 
@@ -27,6 +27,14 @@ public class Block {
         public Point(int x, int y) {
             this.x = x;
             this.y = y;
+        }
+
+        int getX() {
+            return x;
+        }
+
+        int getY() {
+            return y;
         }
 
         @Override
@@ -60,11 +68,12 @@ public class Block {
         this.alive = alive;
     }
 
-    public Point getPoint() {
-        return point;
+    @Override
+    public String toString() {
+        return isAlive() ? "□" : "·";
     }
 
-    public void setPoint(Point point) {
-        this.point = point;
+    public Point getPoint() {
+        return point;
     }
 }

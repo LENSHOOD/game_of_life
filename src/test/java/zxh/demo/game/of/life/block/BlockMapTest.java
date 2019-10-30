@@ -1,9 +1,10 @@
-package zxh.demo.game.of.life;
+package zxh.demo.game.of.life.block;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import zxh.demo.game.of.life.exception.BlockMapException;
 import zxh.demo.game.of.life.helper.BlockHelper;
 
 import java.util.HashMap;
