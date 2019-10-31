@@ -12,8 +12,22 @@ import java.io.IOException;
 */
 public class Runner {
     public static void main(String[] args) throws InterruptedException, IOException {
-        BlockMap blockMap = BlockMap.init(30, new RandomLive());
-        for (int i = 0; i < 100; i++) {
+        if (args.length != 2) {
+            System.out.println("Usage: java -jar xxx.jar [size] [round]");
+            return;
+        }
+
+        int size, round;
+        try {
+            size = Integer.parseInt(args[0]);
+            round = Integer.parseInt(args[1]);
+        } catch (Exception e) {
+            System.out.println("Usage: java -jar xxx.jar [size] [round]");
+            return;
+        }
+
+        BlockMap blockMap = BlockMap.init(size, new RandomLive());
+        for (int i = 0; i < round; i++) {
             System.out.println(blockMap.toString());
             blockMap.nextRound();
             Thread.sleep(200);
