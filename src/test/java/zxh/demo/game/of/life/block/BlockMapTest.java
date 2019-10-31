@@ -76,4 +76,19 @@ public class BlockMapTest {
         assertEquals(2, blockMap.gatherNeighbors(3, 3));
     }
 
+    @Test
+    public void should_sum_2_when_2_alive_and_self_alive() {
+        BlockMap blockMap = BlockMap.init(5, new BlockHelper() {
+            @Override
+            public Map<Block.Point, Block> generateBlocks(int size) {
+                Map<Block.Point, Block> blocks = generateAllDead(size);
+                blocks.get(new Block.Point(3, 2)).setAlive(true);
+                blocks.get(new Block.Point(4, 4)).setAlive(true);
+                blocks.get(new Block.Point(3, 3)).setAlive(true);
+                return blocks;
+            }
+        });
+
+        assertEquals(2, blockMap.gatherNeighbors(3, 3));
+    }
 }

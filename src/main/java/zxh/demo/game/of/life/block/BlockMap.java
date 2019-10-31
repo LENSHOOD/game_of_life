@@ -4,6 +4,7 @@ import zxh.demo.game.of.life.exception.BlockMapException;
 import zxh.demo.game.of.life.helper.BlockHelper;
 
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * BlockMap:
@@ -38,11 +39,17 @@ public class BlockMap {
     }
 
     public int gatherNeighbors(int x, int y) {
+        Block self = blocks.get(new Block.Point(x, y));
+        if (Objects.isNull(self)) {
+            return 0;
+        }
+
         int sum = 0;
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 Block.Point currentPoint = new Block.Point(x + i, y + j);
-                if (!blocks.containsKey(currentPoint)) {
+                boolean isItself = i == 0 && j == 0;
+                if (isItself || !blocks.containsKey(currentPoint)) {
                     continue;
                 }
 
