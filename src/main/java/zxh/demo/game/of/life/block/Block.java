@@ -70,7 +70,9 @@ public class Block {
 
     @Override
     public String toString() {
-        return isAlive() ? "□" : "·";
+        String ansiRed = "\u001B[31m";
+        String ansiReset = "\u001B[0m";
+        return isAlive() ? ansiRed + "□" + ansiReset : "·";
     }
 
     public Point getPoint() {
