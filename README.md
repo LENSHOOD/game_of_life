@@ -2,6 +2,8 @@
 
 The code simulate [Conway's game of life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), player can designate world size and number of generations.
 
+![](./show.gif)
+
 #### build
 ``` shell
 > ./gradlew jar
