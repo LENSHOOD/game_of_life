@@ -2,6 +2,7 @@ package zxh.demo.game.of.life;
 
 import zxh.demo.game.of.life.block.BlockMap;
 import zxh.demo.game.of.life.helper.RandomLive;
+import zxh.demo.game.of.life.printer.MatrixPrinter;
 
 import java.io.IOException;
 
@@ -28,10 +29,9 @@ public class Runner {
 
         BlockMap blockMap = BlockMap.init(size, new RandomLive());
         for (int i = 0; i < round; i++) {
-            System.out.println(blockMap.toString());
+            MatrixPrinter.printByMatrix(blockMap.getMatrix());
             blockMap.nextRound();
             Thread.sleep(200);
-            Runtime.getRuntime().exec("clear");
         }
     }
 }
