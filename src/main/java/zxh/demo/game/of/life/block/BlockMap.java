@@ -15,6 +15,7 @@ public class BlockMap {
     private static final int MIN = 1;
     private static final int MAX = 1000;
     private Map<Block.Point, Block> blocks;
+    private static int length;
 
     private BlockMap() {
         // empty
@@ -25,6 +26,7 @@ public class BlockMap {
             throw new BlockMapException("The range of n should be 1~1000");
         }
 
+        length = n;
         BlockMap blockMap = new BlockMap();
         blockMap.blocks = blockHelper.generateBlocks(n);
         return blockMap;
@@ -38,7 +40,11 @@ public class BlockMap {
         return blocks.size();
     }
 
-    public int gatherNeighbors(int x, int y) {
+    public void nextRound() {
+        blocks.forEach((point, block) -> block.trySurvive(gatherNeighbors(point.getX(), point.getY())));
+    }
+
+    int gatherNeighbors(int x, int y) {
         Block self = blocks.get(new Block.Point(x, y));
         if (Objects.isNull(self)) {
             return 0;
@@ -62,20 +68,26 @@ public class BlockMap {
         return sum;
     }
 
-    public void nextRound() {
-        blocks.forEach((point, block) -> block.trySurvive(gatherNeighbors(point.getX(), point.getY())));
-    }
-
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        int n = (int) Math.sqrt(size());
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
                 result.append(blocks.get(new Block.Point(i, j))).append(" ");
             }
             result.append("\n");
         }
         return result.toString();
+    }
+
+    public int[][] getMatrix() {
+        int[][] result = new int[length][length];
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                Block block = blocks.get(new Block.Point(i, j));
+                result[i][j] = block.isAlive() ? 1 : 0;
+            }
+        }
+        return result;
     }
 }
