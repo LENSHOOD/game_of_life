@@ -1,10 +1,8 @@
 package zxh.demo.game.of.life;
 
 import zxh.demo.game.of.life.block.BlockMap;
-import zxh.demo.game.of.life.helper.RandomStill;
+import zxh.demo.game.of.life.helper.CenterOscillator;
 import zxh.demo.game.of.life.printer.MatrixPrinter;
-
-import java.io.IOException;
 
 /**
  * Runner:
@@ -12,7 +10,7 @@ import java.io.IOException;
  * @date 2019/10/30
 */
 public class Runner {
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws InterruptedException {
         if (args.length != 2) {
             System.out.println("Usage: java -jar xxx.jar [size] [round]");
             return;
@@ -27,7 +25,7 @@ public class Runner {
             return;
         }
 
-        BlockMap blockMap = BlockMap.init(size, new RandomStill());
+        BlockMap blockMap = BlockMap.init(size, new CenterOscillator());
         for (int i = 0; i < round; i++) {
             MatrixPrinter.printByMatrix(blockMap.getMatrix());
             blockMap.nextRound();
