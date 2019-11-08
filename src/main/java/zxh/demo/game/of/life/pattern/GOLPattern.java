@@ -22,7 +22,7 @@ public abstract class GOLPattern {
         boolean[][] stillBlock = getStatusPattern();
         for (int i = 0; i < stillBlock.length; i++) {
             for (int j = 0; j < stillBlock[0].length; j++) {
-                blockMap.get(new Block.Point(i, j))
+                blockMap.get(new Block.Point(i + x, j + y))
                         .setAlive(stillBlock[i][j]);
             }
         }
