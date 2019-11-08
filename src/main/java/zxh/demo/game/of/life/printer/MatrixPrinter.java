@@ -24,6 +24,13 @@ public class MatrixPrinter {
         chart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Scatter);
         chart.addSeries("Alive", new int[]{0}, new int[]{0});
         sw.displayChart();
+
+        // wait canvas to initialize
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     public static void printByMatrix(int[][] intMatrix) {
@@ -37,6 +44,10 @@ public class MatrixPrinter {
                 }
             }
         }
+
+        // expand canvas
+        resultList.add(new int[]{0, 0});
+        resultList.add(new int[]{xLen, yLen});
 
         double[] x = new double[resultList.size()];
         double[] y = new double[resultList.size()];
