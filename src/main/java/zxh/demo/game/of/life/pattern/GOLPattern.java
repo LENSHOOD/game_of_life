@@ -18,7 +18,7 @@ public abstract class GOLPattern {
      * @param blockMap the block map that will generate pattern to it
      * @return dead/alive map
      */
-    Map<Block.Point, Block> generate(int x, int y, Map<Block.Point, Block> blockMap) {
+    public Map<Block.Point, Block> generate(int x, int y, Map<Block.Point, Block> blockMap) {
         boolean[][] stillBlock = getStatusPattern();
         for (int i = 0; i < stillBlock.length; i++) {
             for (int j = 0; j < stillBlock[0].length; j++) {
