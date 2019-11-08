@@ -22,7 +22,7 @@ public class RandomLive implements BlockHelper {
 
     private Map<Block.Point, Block> getRandomAliveBlocks(int size) {
         Map<Block.Point, Block> randomAliveMap = new HashMap<>();
-        int randomCount = random.nextInt(size * size / 3);
+        int randomCount = random.nextInt(size * size / 8);
         for (int i = 0; i < randomCount; i++) {
             Block block = new Block(
                     random.nextInt(size - 1),
