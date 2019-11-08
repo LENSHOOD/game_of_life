@@ -14,7 +14,7 @@ import java.util.Random;
 */
 public class RandomStill implements BlockHelper{
     private static final GOLPattern[] PATTERNS = new GOLPattern[]{
-            new StillBeehive(), new StillBlock(), new StillBoat(), new StillLoaf(), new StillTub()
+            new Beehive(), new StillBlock(), new Boat(), new Loaf(), new Tub()
     };
 
     private Random random = new Random();
