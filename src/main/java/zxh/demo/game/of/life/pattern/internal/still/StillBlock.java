@@ -1,4 +1,4 @@
-package zxh.demo.game.of.life.pattern.internal;
+package zxh.demo.game.of.life.pattern.internal.still;
 
 import zxh.demo.game.of.life.pattern.GOLPattern;
 

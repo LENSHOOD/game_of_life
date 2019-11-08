@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import zxh.demo.game.of.life.block.Block;
 import zxh.demo.game.of.life.helper.BlockHelper;
-import zxh.demo.game.of.life.pattern.internal.StillBlock;
+import zxh.demo.game.of.life.pattern.internal.still.StillBlock;
 
 import java.util.Map;
 
