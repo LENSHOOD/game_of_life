@@ -22,10 +22,10 @@ public class RandomStill implements BlockHelper{
     @Override
     public Map<Block.Point, Block> generateBlocks(int size) {
         int offset = size / 10;
-        return randomStill().generate(offset, offset,
-                randomStill().generate(size - offset, offset,
-                        randomStill().generate(size - offset, size - offset,
-                                randomStill().generate(offset, size - offset, generateAllDead(size)))));
+        return randomStill().generate(offset, offset, 0,
+                randomStill().generate(size - offset, offset, 0,
+                        randomStill().generate(size - offset, size - offset, 0,
+                                randomStill().generate(offset, size - offset, 0, generateAllDead(size)))));
     }
 
     private GOLPattern randomStill() {

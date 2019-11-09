@@ -24,7 +24,7 @@ public class CenterOscillator implements BlockHelper {
     @Override
     public Map<Block.Point, Block> generateBlocks(int size) {
         int offset = size / 2 - 1;
-        return randomStill().generate(offset, offset, generateAllDead(size));
+        return randomStill().generate(offset, offset, 0, generateAllDead(size));
     }
 
     private GOLPattern randomStill() {
