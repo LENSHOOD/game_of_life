@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -90,5 +90,33 @@ public class BlockMapTest {
         });
 
         assertEquals(2, blockMap.gatherNeighbors(3, 3));
+    }
+
+    @Test
+    public void should_next_round_update_status() {
+        BlockMap blockMap = BlockMap.init(5, new BlockHelper() {
+            @Override
+            public Map<Block.Point, Block> generateBlocks(int size) {
+                Map<Block.Point, Block> blocks = generateAllDead(size);
+                blocks.get(new Block.Point(3, 1)).setAlive(true);
+                blocks.get(new Block.Point(3, 2)).setAlive(true);
+                blocks.get(new Block.Point(3, 3)).setAlive(true);
+                return blocks;
+            }
+        });
+
+        blockMap.nextRound();
+        assertFalse(blockMap.getBlock(3, 1).get().isAlive());
+        assertTrue(blockMap.getBlock(3, 2).get().isAlive());
+        assertFalse(blockMap.getBlock(3, 3).get().isAlive());
+        assertTrue(blockMap.getBlock(2, 2).get().isAlive());
+        assertTrue(blockMap.getBlock(4, 2).get().isAlive());
+
+        blockMap.nextRound();
+        assertTrue(blockMap.getBlock(3, 1).get().isAlive());
+        assertTrue(blockMap.getBlock(3, 2).get().isAlive());
+        assertTrue(blockMap.getBlock(3, 3).get().isAlive());
+        assertFalse(blockMap.getBlock(2, 2).get().isAlive());
+        assertFalse(blockMap.getBlock(4, 2).get().isAlive());
     }
 }

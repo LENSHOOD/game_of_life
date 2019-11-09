@@ -3,8 +3,10 @@ package zxh.demo.game.of.life.block;
 import zxh.demo.game.of.life.exception.BlockMapException;
 import zxh.demo.game.of.life.helper.BlockHelper;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * BlockMap:
@@ -36,12 +38,14 @@ public class BlockMap {
         return n < MIN || n > MAX;
     }
 
-    public int size() {
-        return blocks.size();
-    }
-
     public void nextRound() {
-        blocks.forEach((point, block) -> block.trySurvive(gatherNeighbors(point.getX(), point.getY())));
+        Map<Block.Point, Block> nextBlockMap = new HashMap<>();
+        blocks.forEach((point, block) -> {
+            Block nextBlock = Block.of(block);
+            nextBlock.trySurvive(gatherNeighbors(point.getX(), point.getY()));
+            nextBlockMap.put(point, nextBlock);
+        });
+        blocks = nextBlockMap;
     }
 
     int gatherNeighbors(int x, int y) {
@@ -89,5 +93,13 @@ public class BlockMap {
             }
         }
         return result;
+    }
+
+    public int size() {
+        return blocks.size();
+    }
+
+    public Optional<Block> getBlock(int x, int y) {
+        return Optional.of(blocks.get(new Block.Point(x, y)));
     }
 }

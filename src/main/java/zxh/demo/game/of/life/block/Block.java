@@ -9,6 +9,10 @@ import java.util.Objects;
 */
 public class Block {
 
+    public static Block of(Block block) {
+        return new Block(block.point.x, block.point.y, block.alive);
+    }
+
     public void trySurvive(int neighborSum) {
         if (isAlive()) {
             if (neighborSum < 2 || neighborSum > 3) {
