@@ -19,11 +19,11 @@ public abstract class GOLPattern {
      * @return dead/alive map
      */
     public Map<Block.Point, Block> generate(int x, int y, Map<Block.Point, Block> blockMap) {
-        boolean[][] stillBlock = getStatusPattern();
-        for (int i = 0; i < stillBlock.length; i++) {
-            for (int j = 0; j < stillBlock[0].length; j++) {
+        boolean[][] statusPattern = getStatusPattern();
+        for (int i = 0; i < statusPattern.length; i++) {
+            for (int j = 0; j < statusPattern[0].length; j++) {
                 blockMap.get(new Block.Point(i + x, j + y))
-                        .setAlive(stillBlock[i][j]);
+                        .setAlive(statusPattern[i][j]);
             }
         }
         return blockMap;

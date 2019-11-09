@@ -10,11 +10,19 @@ import zxh.demo.game.of.life.printer.MatrixPrinter;
  * @date 2019/10/30
 */
 public class Runner {
-    private static final BlockHelper[] BLOCK_HELPERS = {new RandomLive(), new RandomStill(), new CenterOscillator(), new CenterSpaceShip()};
+    private static final BlockHelper[] BLOCK_HELPERS = {
+            new RandomLive(),
+            new RandomStill(),
+            new CenterOscillator(),
+            new CenterSpaceShip(),
+            new Fleet(),
+    };
 
     public static void main(String[] args) throws InterruptedException {
         if (args.length != 3) {
-            System.out.println("Usage: java -jar xxx.jar [size] [round] [0:random 1:still 2:oscillator 3:space ship]");
+            System.out.println("Usage: java -jar xxx.jar " +
+                    "[size] [round] " +
+                    "[0:random 1:still 2:oscillator 3:space ship 4:fleet]");
             return;
         }
 

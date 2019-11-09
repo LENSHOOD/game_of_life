@@ -3,6 +3,9 @@ package zxh.demo.game.of.life.helper;
 import zxh.demo.game.of.life.block.Block;
 import zxh.demo.game.of.life.pattern.GOLPattern;
 import zxh.demo.game.of.life.pattern.internal.spaceship.Glider;
+import zxh.demo.game.of.life.pattern.internal.spaceship.HeavyWeight;
+import zxh.demo.game.of.life.pattern.internal.spaceship.LightWeight;
+import zxh.demo.game.of.life.pattern.internal.spaceship.MiddleWeight;
 
 import java.util.Map;
 import java.util.Random;
@@ -14,7 +17,7 @@ import java.util.Random;
 */
 public class CenterSpaceShip implements BlockHelper {
     private static final GOLPattern[] PATTERNS = new GOLPattern[]{
-            new Glider()
+            new Glider(), new LightWeight(), new MiddleWeight(), new HeavyWeight()
     };
 
     private Random random = new Random();
