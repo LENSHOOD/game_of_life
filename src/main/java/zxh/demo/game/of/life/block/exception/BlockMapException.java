@@ -1,4 +1,4 @@
-package zxh.demo.game.of.life.exception;
+package zxh.demo.game.of.life.block.exception;
 
 /**
  * BlockMapException:

@@ -1,6 +1,6 @@
 package zxh.demo.game.of.life.block;
 
-import zxh.demo.game.of.life.exception.BlockMapException;
+import zxh.demo.game.of.life.block.exception.BlockMapException;
 import zxh.demo.game.of.life.helper.BlockHelper;
 
 import java.util.HashMap;
