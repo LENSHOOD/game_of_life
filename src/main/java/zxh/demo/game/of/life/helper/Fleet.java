@@ -57,9 +57,8 @@ public class Fleet implements BlockHelper {
         deploy(SpaceShips.LightWeight, 50, 20, 0, battleFlied);
         deploy(SpaceShips.LightWeight, 60, 20, 0, battleFlied);
 
-        // corner
-        deploy(SpaceShips.Glider, 55, 30, 0, battleFlied);
-        deploy(SpaceShips.Glider, 45, 30, 3, battleFlied);
+        // head
+        deploy(SpaceShips.HeavyWeight, 50, 30, 0, battleFlied);
 
         return battleFlied;
     }
